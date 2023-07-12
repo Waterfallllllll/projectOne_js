@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const usdCurr = 28;
 const eurCurr = 32;
@@ -23,7 +23,8 @@ function test() {
         console.log(i);
         if (i === 3) return;
     }
-    console.log('Done');
+    console.log("Done");
 }
 
 test();
+
