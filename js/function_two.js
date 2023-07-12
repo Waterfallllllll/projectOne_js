@@ -26,21 +26,20 @@ function getMathResult(a, b) {
 	} else if (b <= 0) {
 		return a;
 	} else {
-	let sentence = "";
+		let sentence = "";
 		for (let i = 1; i <= b; i++) {
-			
+			sum += a;
 			if (i == b) {
-				sum += a;
 				sentence += `${sum}`;
 			} else {
-				sum += a;
 				sentence += `${sum}---`;
 			}
 		}
-	console.log(sentence);
-	return sentence;
+		console.log(sentence);
+		return sentence;
 	}
 }
 
 getMathResult(10, 10);
+
 

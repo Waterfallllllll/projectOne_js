@@ -37,7 +37,10 @@ module.exports = {
 			"warn"
 		],
 		"no-empty": [
-			"true"
+			"off"
+		],
+		"indent": [
+			"error", "tab"	
 		]
 	}
 };
