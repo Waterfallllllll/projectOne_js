@@ -6,8 +6,7 @@ const personalPlanPeter = {
     skills: {
         languages: ["ru", "eng"],
         programmingLangs: {
-            js: "20%",
-            php: "10%"
+
         },
         exp: "1 month"
     }
@@ -15,20 +14,14 @@ const personalPlanPeter = {
 
 
 function showProgrammingLangs(plan) {
-    while (Object.keys(personalPlanPeter["skills"]["programmingLangs"]) == []) {
-        console.log("");
+
+    const { programmingLangs } = plan["skills"];
+    let sentence = "";
+    for (let key in programmingLangs) {
+        sentence += `Язык ${key} изучен на ${programmingLangs[key]} `;
     }
-    for (let key in plan) {
-        while (typeof (plan[key]) === "object") {
-            for (let i in plan[key]) {
-                while (typeof (plan[key][i]) === "object") {
-                    for (let j in plan[key][i]) {
-                        console.log(`Язык ${j} изучен на ${plan[key][i][j]} Язык ${j} изучен на ${plan[key][i][j]}`);
-                    }
-                }
-            }
-        }
-    }
+    console.log(sentence);
 }
 
 showProgrammingLangs(personalPlanPeter);
+
