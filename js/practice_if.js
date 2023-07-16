@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-'Use strict';
+"Use strict";
 
 /* if (1) {
 	console.log('Ok!');
@@ -26,16 +26,16 @@ const numOne = 50;
 const num = 50;
 switch (num) {
 case 49: 
-	console.log('Error');
-	break;
+    console.log("Error");
+    break;
 case 100:
-	console.log('Error');
-	break;
+    console.log("Error");
+    break;
 case 51:
-	console.log('Succeed');
-	break;
+    console.log("Succeed");
+    break;
 default:
-	console.log('Not this time');
-	break;	
+    console.log("Not this time");
+    break;	
 		
 }

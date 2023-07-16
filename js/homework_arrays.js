@@ -46,3 +46,36 @@ function reversed(str) {
 }
 
 reversed(someString);
+
+
+const baseCurrencies = ["USD", "EUR"];
+const additionalCurrencies = ["UAH", "RUB", "CNY"];
+
+function availableCurr(arr, missingCurr) {
+    if (arr == 0) {
+        console.log("Нет доступных валют");
+    } else {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === missingCurr && i != arr.length - 1) {
+                delete arr[i];   
+                if (i >= 2) {
+                    for (let h = 0; h < arr.length - 1 - h; h++) {
+                        arr[i+h] = arr[i+1+h];
+                    }
+                } else {
+                    for (let j = 0; j < arr.length - 1; j++) {
+                        arr[i+j] = arr[i+1+j];
+                    }
+                }
+                arr.pop();
+            } else if (i == arr.length - 1 && arr.length == 5) {
+                arr.pop();
+            }
+        }
+        const products = arr.join("\n");
+        console.log(`Доступные валюты:\n${products}`);
+    }
+}
+
+availableCurr([...baseCurrencies, ...additionalCurrencies], "EUR");
+
