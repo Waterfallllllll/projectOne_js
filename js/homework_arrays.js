@@ -35,11 +35,14 @@ const someString = "This is some strange string";
 
 function reversed(str) {
     
-    let strin = "";
-    for (let i = str.length - 1; i >= 0; i--) {
-        strin += str[i];
-    }
-    console.log(strin);
+    // let strin = "";
+    // for (let i = str.length - 1; i >= 0; i--) {
+    //     strin += str[i];
+    // }
+    // console.log(strin);
+
+    const products = str.split("").reverse().join("");
+    console.log(products);
 }
 
 reversed(someString);
