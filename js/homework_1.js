@@ -59,10 +59,18 @@ const personalMovieDb = {
         let myFavoriteGenre = "";
         for (let i = 1; i <= 3; i++) {
             myFavoriteGenre = prompt(`Ваш любимый жанр под номером ${i}`, "");
-            personalMovieDb.genres[i - 1] = myFavoriteGenre;
+            // Из промпта нам всегда возвращается тип данных строка.
+            if (myFavoriteGenre == null || myFavoriteGenre == "") {
+                console.log("Вы ввели некорректные данные или не ввели их вовсе");
+                i--;
+            } else {
+                personalMovieDb.genres[i - 1] = myFavoriteGenre;
+            }
         }	
+        personalMovieDb.genres.forEach((item, i) => {
+            console.log(`Любимый жанр ${i + 1} - это ${item}`);
+        });
     }
-    
 };
 
 
