@@ -1,5 +1,6 @@
 "use strict";
-const btn = document.querySelector("button");
+const btn = document.querySelector("button"),
+    overlay = document.querySelector(".overlay");
 
 btn.onclick = function () { // Назначаем тот элемент на который хотим повесить наше событие и дальше используем свойство dom дерева.
     alert("click"); // Назначаем что мы хотим сделать при клике на кнопку. 
@@ -30,22 +31,74 @@ btn.addEventListener("click", (e) => {
 
 // //Иногда нам нужно удалять некоторые обработчики событий с некоторых элементов. Нам необходимо использовать точно такую же функцию, которую мы назначали. Ведь если мы создадим ещё одну такую же функцию, она не будет той же. Поэтому, чтобы иметь возможность удалить потом обработчик, нам её необходимо вынести в отдельную какую-то переменную.
 
-let i = 0;
-const deleteElement = (e) => {
-    console.log(e.target);
+// let i = 0;
+// const deleteElement = (e) => {
+//     console.log(e.target);
 
-    i++;
-    if (i == 1) {
-        btn.removeEventListener("click", deleteElement); // Обычно вот так делаем, когда что-то произошло и обработчик нам больше не нужен. 
-    }
-};
+//     i++;
+//     if (i == 1) {
+//         btn.removeEventListener("click", deleteElement); // Обычно вот так делаем, когда что-то произошло и обработчик нам больше не нужен. 
+//     }
+// };
 
-btn.addEventListener("click", deleteElement); // После того, как у нас выполнится клик по этому элементу, у нас выполнится эта функция. Мы её не вызываем, мы не ставит круглые скобки. Мы просто ссылаемся на функцию которая будет выполняться после клика.
+// btn.addEventListener("click", deleteElement); // После того, как у нас выполнится клик по этому элементу, у нас выполнится эта функция. Мы её не вызываем, мы не ставит круглые скобки. Мы просто ссылаемся на функцию которая будет выполняться после клика.
 
 
 // Всплытие событий.
 
+// let i = 0;
+// const deleteElement = (e) => {
+//     console.log(e.target);
+//     console.log(e.type);
 
+//     // i++;
+//     // if (i == 1) {
+//     //     btn.removeEventListener("click", deleteElement); // Обычно вот так делаем, когда что-то произошло и обработчик нам больше не нужен. 
+//     // }
+// };
 
+// btn.addEventListener("click", deleteElement); // После того, как у нас выполнится клик по этому элементу, у нас выполнится эта функция. Мы её не вызываем, мы не ставит круглые скобки. Мы просто ссылаемся на функцию которая будет выполняться после клика.
+// overlay.addEventListener("click", deleteElement);
 
+// Это и называется всплытие событий. Когда данное действие срабатывает сначало на вложенном элементе и после этого поднимается наверх по эрархии нашего дом дерева. Причем мы ссылаемся на элемент на котором произошло изначальное событие. Но это можно подправить.
 
+const deleteElement = (e) => {
+    console.log(e.currentTarget);
+    console.log(e.type);
+
+    // i++;
+    // if (i == 1) {
+    //     btn.removeEventListener("click", deleteElement); // Обычно вот так делаем, когда что-то произошло и обработчик нам больше не нужен. 
+    // }
+};
+
+// btn.addEventListener("click", deleteElement); // После того, как у нас выполнится клик по этому элементу, у нас выполнится эта функция. Мы её не вызываем, мы не ставит круглые скобки. Мы просто ссылаемся на функцию которая будет выполняться после клика.
+// overlay.addEventListener("click", deleteElement);
+
+//В этом ключевая разница между e.target и e.currentTarget.
+
+// Мы можем отменять стандартые поведения браузера.
+
+const link = document.querySelector("a"); 
+
+link.addEventListener("click", (event) => {
+    event.preventDefault(); // Этот участок кода помещается всегда в самое самое начало. Отменяем стандартное поведение браузера.
+
+    console.log(event.target);
+}); 
+
+// Если хотим навесить обработчик на несколько элементов сразу.
+
+// const heart = document.querySelectorAll(".heart");
+
+// heart.forEach(item => {
+//     item.addEventListener("click", deleteElement);
+// });
+
+// Опции события
+
+const heart = document.querySelectorAll(".heart");
+
+heart.forEach(item => {
+    item.addEventListener("click", deleteElement, {once: true}); // Классная альтернатива removeEventListener. 
+});
