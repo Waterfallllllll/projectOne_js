@@ -102,3 +102,4 @@ const heart = document.querySelectorAll(".heart");
 heart.forEach(item => {
     item.addEventListener("click", deleteElement, {once: true}); // Классная альтернатива removeEventListener. 
 });
+
