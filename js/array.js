@@ -39,3 +39,15 @@ console.log(products.join("; ")); // На основании массива мо
 
 
 // Когда мы работает с элементами на странице, то мы и будем получать псевдомассивы. По факту, это такой объект который совпадает со структурой массива, но есть одно но. У псевдомассивов нет методов, не foreach, filter, pop, push и так далее.
+
+
+
+const name = "Dormi";
+function printName(name1) {
+    
+    return function (name) {
+        return name;
+    };
+}
+const func1 = printName(name);
+const result = func1("Dormi huesos");
