@@ -83,3 +83,90 @@ const newArr = Object.entries(obj)
     .map(item => item[0]);
 
 console.log(newArr);
+
+
+
+
+
+
+
+const films = [
+    {
+        name: "Titanic",
+        rating: 9
+    },
+    {
+        name: "Die hard 5",
+        rating: 5
+    },
+    {
+        name: "Matrix",
+        rating: 8
+    },
+    {
+        name: "Some bad film",
+        rating: 4
+    }
+];
+
+function showGoodFilms(arr) {
+    const newArr = arr.filter(item => item.rating >= 8);
+    return newArr;
+}
+
+showGoodFilms(films);
+
+function showListOfFilms(arr) {
+    const newArr = arr.map(item => item.name).reduce((sum, current) => `${sum}, ${current}`);
+    return newArr;
+}
+
+showListOfFilms(films);
+
+function setFilmsIds(arr) {
+    const newArr = arr.map((item, i) => {
+        item.id = i;
+        return item;
+    });
+
+    return newArr;
+}
+
+const tranformedArray = setFilmsIds(films);
+
+
+function checkFilms(arr) {
+    return arr.every(item => item.id || item.id == 0);
+}
+
+console.log(checkFilms(tranformedArray));
+
+
+const funds = [
+    {amount: -1400},
+    {amount: 2400},
+    {amount: -1000},
+    {amount: 500},
+    {amount: 10400},
+    {amount: -11400}
+];
+
+const getPositiveIncomeAmount = (data) => {
+    let sum = 0;
+    data.filter(item => item.amount > 0).map(item => sum += item.amount);
+    return sum;
+};
+
+getPositiveIncomeAmount(funds);
+
+const getTotalIncomeAmount = (data) => {
+    let sum = 0;
+    if (data.some(item => item.amount < 0)) {
+        data.map(item => sum += item.amount);
+        return sum;
+    } else {
+        getPositiveIncomeAmount(data);
+    }
+};
+
+getTotalIncomeAmount(funds);
