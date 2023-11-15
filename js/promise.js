@@ -43,8 +43,8 @@ const test = time => {
     });
 };
 
-// test(1000).then(() => console.log("1000 ms"));
-// test(2000).then(() => console.log("2000 ms"));
+test(1000).then(() => console.log("1000 ms"));
+test(2000).then(() => console.log("2000 ms"));
 
 Promise.all([test(1000), test(2000)]).then(() => {
     console.log("All");
@@ -53,3 +53,53 @@ Promise.all([test(1000), test(2000)]).then(() => {
 Promise.race([test(1000), test(2000)]).then(() => { // Выполняет свои действия только когда самый первый промис уже отработал.
     console.log("All");
 });
+
+
+
+// Этот код создает пять промисов (p1, p2, p3, p4, p5), каждый из которых имеет свой таймер через setTimeout. Четыре из них (p1 до p4) разрешаются через разное время, передавая разные значения в функцию resolve. p5 отвергается с помощью функции reject.
+
+// Promise.all используется для ожидания выполнения всех промисов из массива, переданного в качестве аргумента. Он ждет завершения всех промисов в массиве, и если все они разрешаются успешно, то Promise.all разрешает общий промис с массивом значений, которые вернулись из этих промисов.
+
+// Однако, если хотя бы один из промисов отвергнут (как в случае с p5), то общий промис, созданный Promise.all, сразу же отвергается и возвращается результат отвергнутого промиса.
+
+// Поскольку p5 отвергнут с помощью функции reject, общий промис, созданный с использованием Promise.all, сразу же отвергается и вызывается console.log(reason), где reason содержит значение "reject". Строка console.log(value) не будет выполнена из-за отверженного промиса в массиве.
+
+// У метода then из объекта Promise есть возможность принимать два аргумента: первый аргумент представляет функцию, которая будет вызвана в случае успешного выполнения всех промисов (когда все промисы из Promise.all разрешатся успешно), а второй аргумент — это функция, которая будет вызвана в случае отклонения хотя бы одного из промисов (когда хотя бы один из промисов отвергнется).
+
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 1000, "one");
+});
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 2000, "two");
+});
+const p3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 3000, "three");
+});
+const p4 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 4000, "four");
+});
+const p5 = new Promise((resolve, reject) => {
+    reject("reject");
+});
+ 
+Promise.all([p1, p2, p3, p4, p5]).then(value => {
+    console.log(value);
+}, reason => {
+    console.log(reason);
+});
+
+///////////////////////
+
+const promisify = (item, delay) =>
+    new Promise(resolve => setTimeout(() => resolve(item), delay));
+ 
+const a = () => promisify("a", 100);
+const b = () => promisify("b", 5000);
+const c = () => promisify("c", 3000);
+ 
+function one() {
+    const promises = [a(), b(), c()];
+    Promise.all(promises).then(values => console.log(values));
+}
+ 
+one();

@@ -170,3 +170,4 @@ const getTotalIncomeAmount = (data) => {
 };
 
 getTotalIncomeAmount(funds);
+
