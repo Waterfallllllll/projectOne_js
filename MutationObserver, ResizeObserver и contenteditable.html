@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mutation Observer Example</title>
+  <!-- Подключаем библиотеку Prism.js через CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css" rel="stylesheet">
+  <style>
+    .language-html {
+        background-color: yellow !important;
+    }
+  </style>
+</head> 
+<body>
+  <div id="highlight-demo">
+    <!-- Начальный контент -->
+    <pre class="language-html">
+      &lt;html&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Hello, world!&lt;/h1&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+    </pre>
+    <pre class="language-javascript">
+      &lt;html&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Hello, world!&lt;/h1&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+    </pre>
+  </div>
+
+  <!-- Подключаем библиотеку Prism.js через CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0"></script>
+  <script>
+    // Ваш JavaScript код для использования MutationObserver
+    let observerCallback = mutations => {
+      for (let mutation of mutations) {
+        for (let node of mutation.addedNodes) {
+          if (!(node instanceof HTMLElement)) continue;
+
+          if (node.matches('pre[class*="language-"]')) {
+            Prism.highlightElement(node);
+          }
+
+          for (let elem of node.querySelectorAll('pre[class*="language-"]')) {
+            Prism.highlightElement(elem);
+          }
+        }
+      }
+    };
+
+    let demoElem = document.getElementById('highlight-demo');
+
+    let observer = new MutationObserver(observerCallback);
+    observer.observe(demoElem, { childList: true, subtree: true });
+    
+  </script>
+</body>
+</html>
