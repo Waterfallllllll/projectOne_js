@@ -375,9 +375,15 @@
 
 // console.log(str);
 
-let regexp = /^(\d+)$/;
+// let regexp = /^(\d+)$/;
 
-let str = "012345678901234567890123456789!";
+// let str = "012345678901234567890123456789!";
 
-// этот поиск будет выполняться очень, очень долго
-console.log( regexp.test(str) );
+// // этот поиск будет выполняться очень, очень долго
+// console.log( regexp.test(str) );
+
+let str = "John Smith";
+
+let result = str.replace(/(\w+) (\w+)/, (...match) => `${match[2]}, ${match[1]}`);
+
+console.log(result); // Smith, John
