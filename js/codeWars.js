@@ -66,74 +66,91 @@
 // console.log(accum("RqaEzty")); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
 // console.log(accum("cwAt"));    // "C-Ww-Aaa-Tttt"
 
-const decodeMorse = function(morseCode){
-    const ref = { 
-        ".-":     "a",
-        "-...":   "b",
-        "-.-.":   "c",
-        "-..":    "d",
-        ".":      "e",
-        "..-.":   "f",
-        "--.":    "g",
-        "....":   "h",
-        "..":     "i",
-        ".---":   "j",
-        "-.-":    "k",
-        ".-..":   "l",
-        "--":     "m",
-        "-.":     "n",
-        "---":    "o",
-        ".--.":   "p",
-        "--.-":   "q",
-        ".-.":    "r",
-        "...":    "s",
-        "-":      "t",
-        "..-":    "u",
-        "...-":   "v",
-        ".--":    "w",
-        "-..-":   "x",
-        "-.--":   "y",
-        "--..":   "z",
-        ".----":  "1",
-        "..---":  "2",
-        "...--":  "3",
-        "....-":  "4",
-        ".....":  "5",
-        "-....":  "6",
-        "--...":  "7",
-        "---..":  "8",
-        "----.":  "9",
-        "-----": "0",
-        "...---...": "sos",
-        "-.-.--": "!"
-    };
-    const sen = morseCode.trim();
-    const sentence = sen.split(" ");
-    let finalSentence = "";
-    let count = 0;
+// const decodeMorse = function(morseCode){
+//     const ref = {
+//         ".-":     "a",
+//         "-...":   "b",
+//         "-.-.":   "c",
+//         "-..":    "d",
+//         ".":      "e",
+//         "..-.":   "f",
+//         "--.":    "g",
+//         "....":   "h",
+//         "..":     "i",
+//         ".---":   "j",
+//         "-.-":    "k",
+//         ".-..":   "l",
+//         "--":     "m",
+//         "-.":     "n",
+//         "---":    "o",
+//         ".--.":   "p",
+//         "--.-":   "q",
+//         ".-.":    "r",
+//         "...":    "s",
+//         "-":      "t",
+//         "..-":    "u",
+//         "...-":   "v",
+//         ".--":    "w",
+//         "-..-":   "x",
+//         "-.--":   "y",
+//         "--..":   "z",
+//         ".----":  "1",
+//         "..---":  "2",
+//         "...--":  "3",
+//         "....-":  "4",
+//         ".....":  "5",
+//         "-....":  "6",
+//         "--...":  "7",
+//         "---..":  "8",
+//         "----.":  "9",
+//         "-----": "0",
+//         "...---...": "sos",
+//         "-.-.--": "!"
+//     };
+//     const sen = morseCode.trim();
+//     const sentence = sen.split(" ");
+//     let finalSentence = "";
+//     let count = 0;
 
-    for (let i = 0; i < sentence.length; i++) {
-        if (count > 0) {
-            count = 0;
-            continue;
-        } else {
-            for (let key in ref) {
-                if (sentence[i] == "") {
-                    count++;
-                    finalSentence += " ";
-                    break;
-                } else {
-                    if (sentence[i] == key) {
-                        finalSentence += ref[key];
-                    }
-                }
+//     for (let i = 0; i < sentence.length; i++) {
+//         if (count > 0) {
+//             count = 0;
+//             continue;
+//         } else {
+//             for (let key in ref) {
+//                 if (sentence[i] == "") {
+//                     count++;
+//                     finalSentence += " ";
+//                     break;
+//                 } else {
+//                     if (sentence[i] == key) {
+//                         finalSentence += ref[key];
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     let final = finalSentence.toUpperCase();
+//     console.log(final);
+//     return final;
+// };
+
+
+// decodeMorse("      ...---... -.-.--   - .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-   .--- ..- -- .--. ...   --- ...- . .-.   - .... .   .-.. .- --.. -.--   -.. --- --. .-.-.-  ");
+
+function arrayDiff(a, b) {
+
+    for (let i = 0; i < a.length; i++) {
+        for (let j = 0; j < b.length; j++) {
+            if (a[i] == b[j]) {
+                a.splice(i, 1);
+                i--;
             }
         }
     }
-    let final = finalSentence.toUpperCase();
-    console.log(final);
-    return final;
-};
 
+    return a;
+}
 
-decodeMorse("      ...---... -.-.--   - .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-   .--- ..- -- .--. ...   --- ...- . .-.   - .... .   .-.. .- --.. -.--   -.. --- --. .-.-.-  ");
+arrayDiff([1, 2, 2, 2, 3], [2,1]);
+arrayDiff([1, 2], [1]);
