@@ -383,8 +383,9 @@
 // // этот поиск будет выполняться очень, очень долго
 // console.log( regexp.test(str) );
 
-let str = "John Smith";
+// let str = "John Smith";
 
-let result = str.replace(/(\w+) (\w+)/, (...match) => `${match[2]}, ${match[1]}`);
+// let result = str.replace(/(\w+) (\w+)/, (...match) => `${match[2]}, ${match[1]}`);
 
-console.log(result); // Smith, John
+// console.log(result); // Smith, John
+

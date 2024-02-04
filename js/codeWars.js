@@ -138,19 +138,66 @@
 
 // decodeMorse("      ...---... -.-.--   - .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-   .--- ..- -- .--. ...   --- ...- . .-.   - .... .   .-.. .- --.. -.--   -.. --- --. .-.-.-  ");
 
-function arrayDiff(a, b) {
+// function arrayDiff(a, b) {
 
-    for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < b.length; j++) {
-            if (a[i] == b[j]) {
-                a.splice(i, 1);
-                i--;
-            }
-        }
-    }
+//     for (let i = 0; i < a.length; i++) {
+//         for (let j = 0; j < b.length; j++) {
+//             if (a[i] == b[j]) {
+//                 a.splice(i, 1);
+//                 i--;
+//             }
+//         }
+//     }
 
-    return a;
+//     return a;
+// }
+
+// arrayDiff([1, 2, 2, 2, 3], [2,1]);
+// arrayDiff([1, 2], [1]);
+
+
+function zero() {
+    return 0;
+}
+function one() {
+    return 1;
+}
+function two() {
+    return 2;
+}
+function three() {
+    return 3;
+}
+function four() {
+    return 4;
+}
+function five() {
+    return 5;
+}
+function six() {
+    return 6;
+}
+function seven() {
+    return 7;
+}
+function eight() {
+    return 8;
+}
+function nine() {
+    return 9;
 }
 
-arrayDiff([1, 2, 2, 2, 3], [2,1]);
-arrayDiff([1, 2], [1]);
+function plus(a,b) {
+    return "+";
+}
+function minus(a,b) {
+    return "-";
+}
+function times(a,b) {
+    return "*";
+}
+function dividedBy(a,b) {
+    return "/";
+}
+
+console.log(seven(times(five())));
