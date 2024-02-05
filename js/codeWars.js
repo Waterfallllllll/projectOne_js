@@ -156,48 +156,54 @@
 // arrayDiff([1, 2], [1]);
 
 
-function zero() {
-    return 0;
-}
-function one() {
-    return 1;
-}
-function two() {
-    return 2;
-}
-function three() {
-    return 3;
-}
-function four() {
-    return 4;
-}
-function five() {
-    return 5;
-}
-function six() {
-    return 6;
-}
-function seven() {
-    return 7;
-}
-function eight() {
-    return 8;
-}
-function nine() {
-    return 9;
+// function zero(func)   { return func ? func(0) : 0; }
+// function one(func)    { return func ? func(1) : 1; }
+// function two(func)    { return func ? func(2) : 2; }
+// function three(func)  { return func ? func(3) : 3; }
+// function four(func)   { return func ? func(4) : 4; }
+// function five(func)   { return func ? func(5) : 5; }
+// function six(func)    { return func ? func(6) : 6; }
+// function seven(func)  { return func ? func(7) : 7; }
+// function eight(func)  { return func ? func(8) : 8; }
+// function nine(func)   { return func ? func(9) : 9; }
+
+// function plus( b )      { return function( a ) { return a + b; }; }
+// function minus( b )     { return function( a ) { return a - b; }; }
+// function times(b) {
+//     return function (a)
+//     {
+//         return a * b;
+//     };
+// }
+// function dividedBy(b) {
+//     return function (a)
+//     {
+//         return Math.floor(a / b);
+//     };
+// }
+
+// console.log(seven(dividedBy(five())));
+
+// function isPangram(string){
+//     let str=string.split(" ").join("").replace(/[\W\d]/g,"").toLowerCase().split("");
+//     return [...new Set(str)].length==26;
+// }
+
+// isPangram("The quick brown fox jumps over the lazy dog");
+
+function findOutlier(integers) {
+    if ((integers[0] % 2 == 0 && integers[2] % 2 == 0) || (integers[1] % 2 == 0 && integers[2] % 2 == 0) || (integers[0] % 2 == 0 && integers[1] % 2 == 0)) {
+        let arr = integers.filter(item => {
+            return item % 2 != 0;
+        });
+        return +arr.join("");
+    } else if ((integers[0] % 2 != 0 && integers[2] % 2 != 0) || (integers[1] % 2 != 0 && integers[2] % 2 != 0) || (integers[0] % 2 != 0 && integers[1] % 2 != 0)) {
+        let arr = integers.filter(item => {
+            return item % 2 == 0;
+        });
+        return +arr.join("");
+    }
 }
 
-function plus(a,b) {
-    return "+";
-}
-function minus(a,b) {
-    return "-";
-}
-function times(a,b) {
-    return "*";
-}
-function dividedBy(a,b) {
-    return "/";
-}
-
-console.log(seven(times(five())));
+findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]); //11 (the only odd number)
+findOutlier([160, 3, 1719, 19, 11, 13, -21]); //160 (the only even number)
