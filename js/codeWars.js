@@ -298,3 +298,24 @@ helper.pageIndex(5); // should == 1 (zero based index)
 helper.pageIndex(2); // should == 0
 helper.pageIndex(20); // should == -1
 helper.pageIndex(-10); // should == -1
+
+document.getElementById("inputField").addEventListener("keydown", function(e) {
+    let sizeInput = document.getElementById("inputField").value;
+    let size = parseFloat(sizeInput); // Преобразование введенного значения в число с плавающей точкой
+
+    if (e.key == "Enter") {
+        // Проверка на целое число добавлена в условие
+        if (!isNaN(size) && Number.isInteger(size) && size > 0 && size <= 1000 && !(/^0\d+/g.test(sizeInput))) {
+            let triangle = "";
+            for (let row = 1; row <= size; row++) {
+                for (let col = 1; col <= row; col++) {
+                    triangle += "*";
+                }
+                triangle += "\n"; // Добавление переноса строки после каждой "строки" треугольника
+            }
+            document.getElementById("triangleOutput").textContent = triangle;
+        } else {
+            alert("Введите корректный размер треугольника (целое число от 1 до 1000)!");
+        }
+    }
+});
