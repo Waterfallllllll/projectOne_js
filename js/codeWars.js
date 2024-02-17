@@ -191,19 +191,110 @@
 
 // isPangram("The quick brown fox jumps over the lazy dog");
 
-function findOutlier(integers) {
-    if ((integers[0] % 2 == 0 && integers[2] % 2 == 0) || (integers[1] % 2 == 0 && integers[2] % 2 == 0) || (integers[0] % 2 == 0 && integers[1] % 2 == 0)) {
-        let arr = integers.filter(item => {
-            return item % 2 != 0;
-        });
-        return +arr.join("");
-    } else if ((integers[0] % 2 != 0 && integers[2] % 2 != 0) || (integers[1] % 2 != 0 && integers[2] % 2 != 0) || (integers[0] % 2 != 0 && integers[1] % 2 != 0)) {
-        let arr = integers.filter(item => {
-            return item % 2 == 0;
-        });
-        return +arr.join("");
+// function findOutlier(integers) {
+//     if ((integers[0] % 2 == 0 && integers[2] % 2 == 0) || (integers[1] % 2 == 0 && integers[2] % 2 == 0) || (integers[0] % 2 == 0 && integers[1] % 2 == 0)) {
+//         let arr = integers.filter(item => {
+//             return item % 2 != 0;
+//         });
+//         return +arr.join("");
+//     } else if ((integers[0] % 2 != 0 && integers[2] % 2 != 0) || (integers[1] % 2 != 0 && integers[2] % 2 != 0) || (integers[0] % 2 != 0 && integers[1] % 2 != 0)) {
+//         let arr = integers.filter(item => {
+//             return item % 2 == 0;
+//         });
+//         return +arr.join("");
+//     }
+// }
+
+// findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]); //11 (the only odd number)
+// findOutlier([160, 3, 1719, 19, 11, 13, -21]); //160 (the only even number)
+
+// function cakes(recipe, available) {
+//     const arr = [];
+//     const firstArr = [];
+//     const secondArr = [];
+
+//     for (let key in recipe) {
+//         firstArr.push(key);
+//     }
+//     for (let key in available) {
+//         secondArr.push(key);
+//     }
+
+//     if (firstArr.length > secondArr.length) {
+//         console.log(0);
+//         return 0;
+//     } else {
+//         for (let key in available) {
+//             for (let keyy in recipe) {
+//                 if (keyy == key) {
+//                     arr.push(Math.floor(available[key] / recipe[key]));
+//                 }
+//             }
+//         }
+//     }
+
+//     console.log(Math.min(...arr));
+//     return Math.min(...arr);
+// }
+
+// // must return 2
+// cakes({flour: 500, sugar: 200, eggs: 1}, {flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+// // must return 0
+// cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
+
+// function cakes(recipe, available) {
+//     return Object.keys(recipe).reduce(function(val, ingredient) {
+//         return Math.min(Math.floor(available[ingredient] / recipe[ingredient] || 0), val);
+//     }, Infinity);
+// }
+
+// cakes({flour: 500, sugar: 200, eggs: 1}, {flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+
+
+// assign your RegExp to REGEXP:
+// const REGEXP = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-z0-9]{6,}$/i;
+
+// console.log(REGEXP.test("DSJKHD23"));
+
+// Когда мы используем .* внутри lookahead-структуры, такой как (?=.*\d), .* помогает "пропустить" любое количество символов перед символом, который мы хотим найти (в данном случае — цифру \d). Это не означает, что мы разрешаем любые символы во всём пароле; вместо этого мы говорим: "где-то в пароле должна быть хотя бы одна цифра".
+
+class PaginationHelper {
+    constructor(collection, itemsPerPage) {
+        // The constructor takes in an array of items and a integer indicating how many
+        // items fit within a single page
+        this.collection = collection;
+        this.itemsPerPage = itemsPerPage;
+    }
+    itemCount() {
+        // returns the number of items within the entire collection
+        return this.collection.length;
+    }
+    pageCount() {
+        // returns the number of pages
+        return Math.round(this.collection.length / this.itemsPerPage);
+    }
+    pageItemCount(pageIndex) {
+        // returns the number of items on the current page. page_index is zero based.
+        // this method should return -1 for pageIndex values that are out of range
+        let arr = [];
+        
+    }
+    pageIndex(itemIndex) {
+        // determines what page an item is on. Zero based indexes
+        // this method should return -1 for itemIndex values that are out of range
+        
     }
 }
 
-findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]); //11 (the only odd number)
-findOutlier([160, 3, 1719, 19, 11, 13, -21]); //160 (the only even number)
+var helper = new PaginationHelper(["a","b","c","d","e","f"], 4);
+helper.pageCount(); // should == 2
+helper.itemCount(); // should == 6
+helper.pageItemCount(0); // should == 4
+helper.pageItemCount(1); // last page - should == 2
+helper.pageItemCount(2); // should == -1 since the page is invalid
+
+// pageIndex takes an item index and returns the page that it belongs on
+helper.pageIndex(5); // should == 1 (zero based index)
+helper.pageIndex(2); // should == 0
+helper.pageIndex(20); // should == -1
+helper.pageIndex(-10); // should == -1
