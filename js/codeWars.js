@@ -258,46 +258,60 @@
 
 // Когда мы используем .* внутри lookahead-структуры, такой как (?=.*\d), .* помогает "пропустить" любое количество символов перед символом, который мы хотим найти (в данном случае — цифру \d). Это не означает, что мы разрешаем любые символы во всём пароле; вместо этого мы говорим: "где-то в пароле должна быть хотя бы одна цифра".
 
-class PaginationHelper {
-    constructor(collection, itemsPerPage) {
-        // The constructor takes in an array of items and a integer indicating how many
-        // items fit within a single page
-        this.collection = collection;
-        this.itemsPerPage = itemsPerPage;
-    }
-    itemCount() {
-        // returns the number of items within the entire collection
-        return this.collection.length;
-    }
-    pageCount() {
-        // returns the number of pages
-        return Math.round(this.collection.length / this.itemsPerPage);
-    }
-    pageItemCount(pageIndex) {
-        // returns the number of items on the current page. page_index is zero based.
-        // this method should return -1 for pageIndex values that are out of range
-        let arr = [];
-        
-    }
-    pageIndex(itemIndex) {
-        // determines what page an item is on. Zero based indexes
-        // this method should return -1 for itemIndex values that are out of range
-        
-    }
-}
+// class PaginationHelper {
+//     constructor(collection, itemsPerPage) {
+//         // The constructor takes in an array of items and a integer indicating how many
+//         // items fit within a single page
+//         this.collection = collection;
+//         this.itemsPerPage = itemsPerPage;
+//     }
+//     itemCount() {
+//         // returns the number of items within the entire collection
+//         // console.log(this.collection.length);
+//         return this.collection.length;
+//     }
+//     pageCount() {
+//         // returns the number of pages
+//         // console.log(Math.round(this.collection.length / this.itemsPerPage));
+//         return Math.round(this.collection.length / this.itemsPerPage);
+//     }
+//     pageItemCount(pageIndex) {
+//         // returns the number of items on the current page. page_index is zero based.
+//         // this method should return -1 for pageIndex values that are out of range
+//         if (pageIndex > this.pageCount() - 1 || pageIndex < 0) {
+//             return -1;
+//         }
+//         console.log(this.itemsPerPage - Math.ceil((((pageIndex + 1)*this.itemsPerPage)%this.itemCount())%this.itemsPerPage));
+//         return this.itemsPerPage - Math.ceil((((pageIndex + 1)*this.itemsPerPage)%this.itemCount())%this.itemsPerPage);
+//     }
+//     pageIndex(itemIndex) {
+//         // determines what page an item is on. Zero based indexes
+//         // this method should return -1 for itemIndex values that are out of range
+//         if (itemIndex > this.itemCount() - 1 || itemIndex < 0) {
+//             return -1;
+//         }
+  
+//         return Math.ceil((itemIndex + 1)/this.itemsPerPage) - 1;
+//     }
+// }
 
-var helper = new PaginationHelper(["a","b","c","d","e","f"], 4);
-helper.pageCount(); // should == 2
-helper.itemCount(); // should == 6
-helper.pageItemCount(0); // should == 4
-helper.pageItemCount(1); // last page - should == 2
-helper.pageItemCount(2); // should == -1 since the page is invalid
+// var helper = new PaginationHelper(["a", "b", "c", "d", "e", "f"], 4);
 
-// pageIndex takes an item index and returns the page that it belongs on
-helper.pageIndex(5); // should == 1 (zero based index)
-helper.pageIndex(2); // should == 0
-helper.pageIndex(20); // should == -1
-helper.pageIndex(-10); // should == -1
+// helper.pageCount(); // should == 2
+// helper.itemCount(); // should == 6
+// helper.pageItemCount(0); // should == 4
+// helper.pageItemCount(1); // last page - should == 2
+// helper.pageItemCount(2); // should == -1 since the page is invalid
+
+// // pageIndex takes an item index and returns the page that it belongs on
+// helper.pageIndex(5); // should == 1 (zero based index)
+// helper.pageIndex(2); // should == 0
+// helper.pageIndex(20); // should == -1
+// helper.pageIndex(-10); // should == -1
+
+
+
+// console.log(1%6);
 
 document.getElementById("inputField").addEventListener("keydown", function(e) {
     let sizeInput = document.getElementById("inputField").value;
