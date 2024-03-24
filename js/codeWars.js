@@ -313,23 +313,91 @@
 
 // console.log(1%6);
 
-document.getElementById("inputField").addEventListener("keydown", function(e) {
-    let sizeInput = document.getElementById("inputField").value;
-    let size = parseFloat(sizeInput); // Преобразование введенного значения в число с плавающей точкой
+// document.getElementById("inputField").addEventListener("keydown", function(e) {
+//     let sizeInput = document.getElementById("inputField").value;
+//     let size = parseFloat(sizeInput); // Преобразование введенного значения в число с плавающей точкой
 
-    if (e.key == "Enter") {
-        // Проверка на целое число добавлена в условие
-        if (!isNaN(size) && Number.isInteger(size) && size > 0 && size <= 1000 && !(/^0\d+/g.test(sizeInput))) {
-            let triangle = "";
-            for (let row = 1; row <= size; row++) {
-                for (let col = 1; col <= row; col++) {
-                    triangle += "*";
-                }
-                triangle += "\n"; // Добавление переноса строки после каждой "строки" треугольника
-            }
-            document.getElementById("triangleOutput").textContent = triangle;
-        } else {
-            alert("Введите корректный размер треугольника (целое число от 1 до 1000)!");
+//     if (e.key == "Enter") {
+//         // Проверка на целое число добавлена в условие
+//         if (!isNaN(size) && Number.isInteger(size) && size > 0 && size <= 1000 && !(/^0\d+/g.test(sizeInput))) {
+//             let triangle = "";
+//             for (let row = 1; row <= size; row++) {
+//                 for (let col = 1; col <= row; col++) {
+//                     triangle += "*";
+//                 }
+//                 triangle += "\n"; // Добавление переноса строки после каждой "строки" треугольника
+//             }
+//             document.getElementById("triangleOutput").textContent = triangle;
+//         } else {
+//             alert("Введите корректный размер треугольника (целое число от 1 до 1000)!");
+//         }
+//     }
+// });
+
+// function rgb(r, g, b) {
+//     let string = [r, g, b];
+
+//     function verify(item) {
+//         if (item.toString(16).length == 1) {
+//             return 0 + item.toString(16).toUpperCase();
+//         } else {
+//             return item.toString(16).toUpperCase();
+//         }
+//     }
+
+//     let arr = string.map(item => {
+//         if (item > 255) {
+//             item = 255;
+//             return verify(item);
+//         } else if (item < 0) {
+//             item = 0;
+//             return verify(item);
+//         } else {
+//             return verify(item);
+//         }
+//     });
+//     console.log(arr.join(""));
+//     return arr.join("");
+// }
+
+// rgb(8, 50, 126);
+
+function toUnderscore(string) {
+    const arr = [...string];
+
+    const buff = arr.shift();
+
+    let arr1 = arr.filter(item => {
+        return item.includes(item.toUpperCase());
+    });
+
+    let arr2 = arr.map((item, i, arr) => {
+        if (item == arr1) {
+            return arr.splice(i, arr.length - i);
+            
         }
-    }
-});
+    });
+
+    const arr3 = [...arr2.join("")];
+
+    let arr4 = arr3.map(item => {
+        if (item == ",") {
+
+        } else {
+            return item;
+        }
+    });
+
+    arr.forEach((item, i, arr) => {
+        if (arr.length - 1 === i) {
+            arr[i + 1] = "_";
+            arr.splice(i + 2, 0, arr4.join(""));
+        }
+    });
+
+    let arr6 = [...arr.join("")];
+    arr6.unshift(buff);
+    console.log(arr6.join(""));
+}
+
+toUnderscore("MoviesAndBooks");

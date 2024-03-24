@@ -1,0 +1,172 @@
+/* @keyframes move {
+  from, to {
+    top: 0;
+    left: 0;
+  }
+  25%, 75% {
+    top: 100%;
+  }
+  50% {
+    top: 50%;
+  }
+} */
+
+/* @keyframes move {
+    from {text-shadow: 0 0 3px black;}
+    50% {text-shadow: 0 0 30px black;}
+    to {text-shadow: 0 0 3px black;}
+} */
+
+/* @keyframes move {
+  from {
+    top: 50px;
+    animation-timing-function: ease-out;
+  }
+  25% {
+    top: 25px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    top: 50px;
+    animation-timing-function: ease-out;
+  }
+  75% {
+    top: 35px;
+    animation-timing-function: ease-in;
+  }
+  to {
+    top: 50px;
+  }
+}
+
+body {
+    height: 100vh;
+}
+
+.animated {
+    position: relative;
+    background-color: green;
+    height: 100px;
+    width: 150px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+} */
+/* Пример использования анимации для элемента */
+/* .animated-element {
+    position: absolute;
+    animation: move 5s linear infinite; /* Применение анимации move на элемент с классом .animated-element */
+    /* width: 150px;
+    height: 100px;
+    padding: 10px;
+} 
+*/ 
+
+/* body {
+  margin: 0;
+  background: #E6E2D6;
+}
+.loader-container {
+  position: absolute;
+  top: calc(50% - 65px);
+  left: calc(50% - 65px);
+  width: 100px;
+  height: 100px;
+  background: #BDE2E0;
+  border-radius: 50%;
+  border: 15px solid #D7695A;
+  box-shadow: inset 0 0 15px rgba(0,0,0,.5);
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 100px;
+  /* overflow: hidden; */
+/* }
+@keyframes load {
+  100% {
+    transform: translateY(-1000px);
+  }
+}
+.loader {
+  animation: load 11s steps(11, jump-none) infinite;
+} */ 
+
+body {
+  margin: 0;
+  background: #F4EDE5;
+}
+div {
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
+}
+span {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  box-shadow: 2px 2px 3px rgba(0,0,0,.4);
+  -webkit-animation: run 2s infinite ease-in-out;
+  animation: run 2s infinite ease-in-out;
+}
+
+.one {
+  background: #F3B222;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+.two {
+  background: #F0653E;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.three {
+  background: #B9C0C0;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+.four {
+  background: #8F7473;
+}
+
+@-webkit-keyframes run {
+  0% {
+    transform: translate(0%);
+    border-radius: 50%;
+  }
+  25% {
+    transform: translate(150%) scale(0.5); 
+    border-radius: 0%;
+  }
+  50% {
+    transform: translate(150%, 150%);
+    border-radius: 50%; 
+  }
+  75% {
+    transform: translate(0%, 150%) scale(0.5); 
+    border-radius: 0%;
+  }
+}
+@keyframes run {
+  0% {
+    transform: translate(0%);
+    border-radius: 50%;
+  }
+  25% {
+    transform: translate(150%) scale(0.5); 
+    border-radius: 0%;
+  }
+  50% {
+    transform: translate(150%, 150%);
+    border-radius: 50%; 
+  }
+  75% {
+    transform: translate(0%, 150%) scale(0.5); 
+    border-radius: 0%;
+  }
+}
