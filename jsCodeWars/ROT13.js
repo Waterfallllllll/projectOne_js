@@ -8,20 +8,19 @@ function rot13(str) {
     console.log(englishAlphabet);
     const arr = [...str.toLowerCase()];
     const secondArr = [];
+    let sum = 0;
     let count = 0;
     console.log(arr);
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < englishAlphabet.length; j++) {
-            if (typeof arr[i] == "string") {
-                if (arr[i] == englishAlphabet[j]) {
-                    if (englishAlphabet[j + 13] == undefined) {
-                        count++;
-                        secondArr.push(englishAlphabet[count - 1]);
-                    } else {
-                        secondArr.push(englishAlphabet[j + 13]);
-                    }
+            if (arr[i] == englishAlphabet[j]) {
+                if (englishAlphabet[j + 13] == undefined) {
+                    sum = j + 13;
+                    secondArr.push(englishAlphabet[sum - englishAlphabet.length]);
+                } else {
+                    secondArr.push(englishAlphabet[j + 13]);
                 }
-            }
+            } 
         }
     }
     console.log(count);
@@ -29,6 +28,6 @@ function rot13(str) {
     // console.log(arr);
 }
 
-rot13("rknzcyr.");
+rot13("EBG13 rknzcyr.");
 
 
