@@ -18,17 +18,15 @@ function rot13(str) {
     let k = 0;
 
 
-    [...str].forEach(item => {
-        if (item == /\D/) {
-            console.log(item);
-        }
-    });
+
 
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < englishAlphabetUpperCase.length; j++) {
             if (arr[i] == arr[i].toUpperCase()) {
-                if (arr[i] == /\D/) {
+                const reg = /[^0-9.]/;
+                if (arr[i].search(reg) || arr[i] == " ") {
                     secondArr.push(arr[i]);
+                    break;
                 }
                 if (arr[i] == englishAlphabetUpperCase[j]) {
                     if (englishAlphabetUpperCase[j + 13] == undefined) {
@@ -63,6 +61,6 @@ function rot13(str) {
     console.log(secondArr);
 }
 
-rot13("EBG13 rknzcyr.");
+rot13("This is my first ROT13 excercise!");
 
 
