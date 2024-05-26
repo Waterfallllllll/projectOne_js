@@ -19,11 +19,10 @@ function rot13(str) {
 
 
 
-
+    const reg = /[^0-9.]/;
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < englishAlphabetUpperCase.length; j++) {
             if (arr[i] == arr[i].toUpperCase()) {
-                const reg = /[^0-9.]/;
                 if (arr[i].search(reg) || arr[i] == " ") {
                     secondArr.push(arr[i]);
                     break;
@@ -41,10 +40,14 @@ function rot13(str) {
             } else {
                 if (k == arr.length) {
                     break;
-                }
-                for (k = i; k < arr.length; k++) {
+                }   
+                for (k = i; k < arr.length; k++) { 
                     for (let j = 0; j < englishAlphabetLowerCase.length; j++) {
                         if (arr[k] == englishAlphabetLowerCase[j]) {
+                            if (arr[j].search(reg) || arr[j] == " ") {
+                                secondArr.push(arr[j]);
+                                break;
+                            }
                             if (englishAlphabetLowerCase[j + 13] == undefined) {
                                 sum = j + 13;
                                 secondArr.push(englishAlphabetLowerCase[sum - englishAlphabetLowerCase.length]);
